@@ -1,0 +1,27 @@
+{block content}
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="panel-card p-4">
+            <h1 class="h5">Uživatelé</h1>
+            <ul class="list-unstyled">
+                {foreach $users as $user}
+                    <li class="mb-2">{$user['email']} <span class="text-muted">({$user['role']})</span></li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel-card p-4">
+            <h2 class="h5">Šablony her</h2>
+            <ul class="list-unstyled">
+                {foreach $templates as $template}
+                    <li class="mb-2">
+                        <strong>{$template['name']}</strong>
+                        <p class="text-muted small">{$template['description']}</p>
+                    </li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
+{/block}

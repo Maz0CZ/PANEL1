@@ -1,0 +1,26 @@
+parameters:
+  appDir: %appDir%
+  databasePath: %appDir%/storage/db/panel.sqlite
+  logDir: %appDir%/storage/logs
+  baseUrl: http://localhost:8000
+  mailFrom: "noreply@ultimatepanel.local"
+
+services:
+  - App\Router\RouterFactory
+  - App\Model\Database\Connection
+  - App\Model\Repository\UserRepository
+  - App\Model\Repository\ServerRepository
+  - App\Model\Repository\GameTemplateRepository
+  - App\Model\Repository\FtpAccountRepository
+  - App\Model\Service\ProcessService
+  - App\Model\Service\ConsoleService
+  - App\Model\Service\TemplateService
+  - App\Model\Service\UserLimitService
+  - App\Model\Mail\RegistrationMailer
+
+application:
+  errorPresenter: Error
+
+routing:
+  router: App\Router\RouterFactory::createRouter
+

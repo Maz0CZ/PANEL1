@@ -1,0 +1,39 @@
+{block content}
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="panel-card p-4">
+            <div class="d-flex justify-content-between">
+                <h1 class="h4">Server #{$server['id']}</h1>
+                <span class="badge bg-status">{$server['status']}</span>
+            </div>
+            <p class="text-muted">Hra: {$templateName} | Port: {$server['port']}</p>
+            <div class="d-flex gap-2">
+                <a class="btn btn-success" href="{link start!, id: $server['id']}">Start</a>
+                <a class="btn btn-warning" href="{link stop!, id: $server['id']}">Stop</a>
+            </div>
+        </div>
+        <div class="panel-card p-4 mt-4">
+            <h2 class="h6">Live Console</h2>
+            <pre class="console-window">{$console}</pre>
+            <form method="get" action="{link sendCommand!, id: $server['id']}" class="mt-2">
+                <div class="input-group">
+                    <input type="text" name="command" class="form-control" placeholder="Zadejte příkaz">
+                    <button class="btn btn-glow" type="submit">Odeslat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel-card p-4">
+            <h2 class="h6">FTP přístup</h2>
+            {if $ftp}
+                <p>Uživatel: <strong>{$ftp['username']}</strong></p>
+                <p>Home: <code>{$ftp['home_dir']}</code></p>
+                <p class="text-muted small">Heslo bylo zobrazeno při vytvoření serveru.</p>
+            {else}
+                <p class="text-muted">FTP účet nebyl nalezen.</p>
+            {/if}
+        </div>
+    </div>
+</div>
+{/block}
